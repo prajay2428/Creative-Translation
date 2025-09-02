@@ -306,7 +306,7 @@
   </div>
 
   <!-- Prompts stored separately -->
-  <script type="text/plain" id="prompt1">Transcription with Segmentation
+  <script type="text/plain" id="prompt1">  Transcription with Segmentation
 
     Please transcribe the attached audio.
     Now please follow the below approach.
@@ -388,8 +388,8 @@
     Talk:
     When I say cancerous cells .. every one of our bodies has cancerous cells - But they are disorganized; they are all over the place. 
     For some reason, if you create certain situations in the body … they will get organized. So from petty crime … to organized crime - serious problem, isn't it? 
-    There are petty criminals everywhere in every town. Here and there, they will do little pick-pocket, this, that, no problem; But if fifty of them get organized in Coimbatore city … then suddenly .. the whole atmosphere in the city will change … because these fifty guys together can do such things - that it'll become dangerous for you to step on the street.
-    So, that's all is happening in the body. There are cancerous cells - these are criminal cells. They are running around. If they are loafing around by themselves, no problem. If they all gather in one place … if they meet in one place, and they hit it off … then it's a problem. 
+    There are petty criminals everywhere in every town. Here and there, they will do little pick-pocket, this, that, no problem; But if fifty of them get organized in Coimbatore city … then suddenly .. the whole atmosphere in the city    will change … because these fifty guys together can do such things - that it'll become dangerous for you to step on the street.
+    So, that's all is happening in the body. There are cancerous cells - these are criminal cells. They are running around. If they are loafing around by themselves, no problem. If they all gather in one place … if they meet in one       place, and they hit it off … then it's a problem. 
     So … if the law enforcement is good, they see this: Initially, a criminal is happy picking somebody's pocket - Every day picking pocket; when two of them meet, they will dream of burgling a house; When five of them meet … they will dream of robbing a bank - That's how it is.
     So.. if the law enforcement is conscious and active … they will make sure - here and there they pick up one guy and throw him in - They will do something … you know… so that they never gather in enough numbers to become a major problem.
     
@@ -401,8 +401,10 @@
     And women when they are pregnant - up to four months of pregnancy, or to be safe up to five months of pregnancy … one should not consume neem. 
     Because it is a spermicide, when the fetus is developing, the role of the sperm is still there … to a certain point. 
     Four months is what is prescribed … I am saying five months - one can start after five months.
+
+
     </script>
-  <script type="text/plain" id="prompt2">Linguistic Punctuation
+  <script type="text/plain" id="prompt2"> Linguistic Punctuation
 
     I have a script that is structured as below: 
     This is a dubbing script, The words are intentionally chosen. At any cost don’t change or remove even a single word; Even if it's redundant or grammatically wrong, please keep the words absolutely as it is. Even if it's redundant, keep the words as it is. Because the structure, length and timing needs to be exactly the same - Even the number of alphabets.  
@@ -455,8 +457,9 @@
     
     
     Segmented Script:
+
     </script>
-  <script type="text/plain" id="prompt3">Translation to Telugu:
+  <script type="text/plain" id="prompt3"> Translation to Telugu:
 
     Instructions for translation:
     
@@ -466,7 +469,7 @@
     Each thought is made up of blocks of information.
     
     We have used … , ; - . and ? to mark the boundaries of Information blocks, thoughts and ideas.
-    Now do not change ; and , and - in the result. They are not just grammatically placed, they are like markers for time spacing information for the dubbing artist. So dont change them, even though grammatically it seems better to change.
+    Now do not change ; and , and - in the result. They are not just grammatically placed, they are like markers for time spacing information for the dubbing artist. So dont change them, even though grammatically it seems better to  change.
     
     
     Okay, now can you give the telugu talk for this with the same segment, thought and idea structure?
@@ -477,8 +480,9 @@
     
     
     Segmented Script that is to be translated:
+
   </script>
-  <script type="text/plain" id="prompt4">Tuning the Language to spoken style - Claude
+  <script type="text/plain" id="prompt4"> Tuning the Language to spoken style - Claude
 
     I have a translation of an English script; implement the below for the entire script:
     Aspect 1:
@@ -786,7 +790,8 @@
     Yes, please directly give the optimized version. No need to give the original version. And Please don't remove the subjects totally. Remove only when they are really redundant. Do not use English words too much..
     
     Below is the Telugu script to be optimized (if there are multiple scripts, consider each as a totally different script from others):
-  </script>
+
+    </script>
   <script type="text/plain" id="prompt5">I have a talk of Sadhguru Translated by two AI Models.
 
     The talk is made up of blocks of points.
@@ -812,6 +817,8 @@
     
     
     Claude Translation:
+
+
     </script>
   <script type="text/plain" id="prompt6">Reframing Sentences with blocks that are not in a natural flow
 
@@ -1028,6 +1035,9 @@
     
     Note: Keep english words to minimum.
     Note: Directly give the optimized version, no need to give the original version in result.
+
+
+
     
     
     
@@ -1340,7 +1350,9 @@
     When there is a repeat pattern in the sentences with a different subjet
     
     
-    Text to be Broken into paragraphs:</script>
+    Text to be Broken into paragraphs:
+
+  </script>
 
   <script>
     const message = document.getElementById('message');
@@ -1370,13 +1382,13 @@
     };
 
     const stepNames = {
-      1: "Gemini 2.5 Pro 📎",
+      1: "Gemini 2.5 Pro 🔍",
       2: "chatGPT 4.1",
       3: "Gemini 2.5 Pro",
       4: "Claude Sonnet 3.5",
       5: "DeepSeek V3",
       6: "Gemini 2.5 Pro",
-      7: "Gemini 2.5 Pro 📎",
+      7: "Gemini 2.5 Pro 🔍",
       8: "Gemini 2.5 Pro"
     };
 
@@ -1411,13 +1423,17 @@
 
     function clearAllInputs() {
       for (let i = 1; i <= 8; i++) {
-        document.getElementById(`input${i}`).value = "";
+        const inputBox = document.getElementById(`input${i}`);
+        if (inputBox) {
+          inputBox.value = "";
+        }
       }
       showMessage("🗑️ All input boxes cleared");
     }
 
     function handleCopy(step) {
-      const userInput = document.getElementById(`input${step}`).value.trim();
+      const inputBox = document.getElementById(`input${step}`);
+      const userInput = inputBox ? inputBox.value.trim() : "";
       let finalText = "";
 
       if (step === 5) {
@@ -1453,21 +1469,44 @@
     for (let i = 1; i <= 8; i++) {
       const stepDiv = document.createElement('div');
       stepDiv.className = 'step';
-      stepDiv.innerHTML = `
-        <h3>
-          <span class="step-number">${i}</span>
-          <span>${stepNames[i]}</span>
-          <span class="ai-name">${aiNames[i]}</span>
-        </h3>
-        <div class="step-description"><strong>📋 Instructions:</strong> ${descriptions[i]}</div>
-        <div class="step-result"><strong>📤 Expected Output:</strong> ${results[i]}</div>
-        <textarea id="input${i}" placeholder="Paste or type content for Step ${i}..."></textarea>
-        <div class="button-group">
-          <button class="paste-btn" onclick="handlePaste(${i})">📥 Paste</button>
-          <button class="copy-btn" onclick="handleCopy(${i})">📋 Copy Prompt</button>
-          <button class="clear-btn" onclick="handleClear(${i})">🗑️ Clear</button>
-        </div>
-      `;
+      
+      // Different button text for steps 1 and 7
+      let copyButtonText = "📋 Copy Prompt";
+      if (i === 1 || i === 7) {
+        copyButtonText = "📋 Copy Prompt (attach audio file)";
+      }
+      
+      // Step 1 doesn't have input box or paste/clear buttons
+      if (i === 1) {
+        stepDiv.innerHTML = `
+          <h3>
+            <span class="step-number">${i}</span>
+            <span>${stepNames[i]}</span>
+            <span class="ai-name">${aiNames[i]}</span>
+          </h3>
+          <div class="step-description"><strong>📋 Instructions:</strong> ${descriptions[i]}</div>
+          <div class="step-result"><strong>📤 Expected Output:</strong> ${results[i]}</div>
+          <div class="button-group">
+            <button class="copy-btn" onclick="handleCopy(${i})">${copyButtonText}</button>
+          </div>
+        `;
+      } else {
+        stepDiv.innerHTML = `
+          <h3>
+            <span class="step-number">${i}</span>
+            <span>${stepNames[i]}</span>
+            <span class="ai-name">${aiNames[i]}</span>
+          </h3>
+          <div class="step-description"><strong>📋 Instructions:</strong> ${descriptions[i]}</div>
+          <div class="step-result"><strong>📤 Expected Output:</strong> ${results[i]}</div>
+          <textarea id="input${i}" placeholder="Paste or type content for Step ${i}..."></textarea>
+          <div class="button-group">
+            <button class="paste-btn" onclick="handlePaste(${i})">📥 Paste</button>
+            <button class="copy-btn" onclick="handleCopy(${i})">${copyButtonText}</button>
+            <button class="clear-btn" onclick="handleClear(${i})">🗑️ Clear</button>
+          </div>
+        `;
+      }
       container.appendChild(stepDiv);
     }
   </script>
