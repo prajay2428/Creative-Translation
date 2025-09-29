@@ -150,6 +150,17 @@
       background: #f5f2ee;
       border-color: #b8a990;
     }
+
+    .followup-btn {
+      border-color: #a08967;
+      color: #6b5b47;
+      background: #f9f7f4;
+    }
+
+    .followup-btn:hover {
+      background: #f0ebe4;
+      border-color: #8b7057;
+    }
     
     .step {
       background: #ffffff;
@@ -290,6 +301,8 @@
   </style>
 </head>
 <body>
+  
+
   <div class="container">
     <h2>Creative Translation Workflow</h2>
     <p class="subtitle">Multi-AI translation pipeline with 8 specialized steps</p>
@@ -306,7 +319,7 @@
   </div>
 
   <!-- Prompts stored separately -->
-  <script type="text/plain" id="prompt1">  Transcription with Segmentation
+  <script type="text/plain" id="prompt1">Transcription with Segmentation
 
     Please transcribe the attached audio.
     Now please follow the below approach.
@@ -401,10 +414,8 @@
     And women when they are pregnant - up to four months of pregnancy, or to be safe up to five months of pregnancy … one should not consume neem. 
     Because it is a spermicide, when the fetus is developing, the role of the sperm is still there … to a certain point. 
     Four months is what is prescribed … I am saying five months - one can start after five months.
-
-
-    </script>
-  <script type="text/plain" id="prompt2"> Linguistic Punctuation
+</script>
+  <script type="text/plain" id="prompt2">Linguistic Punctuation
 
     I have a script that is structured as below: 
     This is a dubbing script, The words are intentionally chosen. At any cost don’t change or remove even a single word; Even if it's redundant or grammatically wrong, please keep the words absolutely as it is. Even if it's redundant, keep the words as it is. Because the structure, length and timing needs to be exactly the same - Even the number of alphabets.  
@@ -416,17 +427,12 @@
     
     only the punctuation marks should be changed or added.
     Within Each Paragraph,
-    Use semicolon To Join Independent Clauses:
-    Join them with a semicolon instead of using a period or a comma.
-    Example: I love to read; books transport me to different worlds.
-    Use semicolon To Separate Items in a List:
-    When items in a list contain commas themselves, use semicolons to separate the items.
-    Example: We visited New York City, New York; Los Angeles, California; and Miami, Florida.
-    Use semicolon Before Conjunctive Adverbs conjunctive adverbs like however, therefore, nevertheless, moreover, because, when, but, and then, if, etc.. when they join independent clauses.
-    Example: I studied hard for the exam; however, I still didn't get an A.
-    Remember: While a semicolon can sometimes replace a period, it's essential to ensure that the two clauses are closely related in meaning. If the ideas are not closely connected, it's better to use a period.
-    
-    Remember if two clauses are joined using adverb, then use comma between them instead of a semicolon.
+    The catch is … is placed in the original script to mark the pauses in the speech to the dubbing artist. To the extent possible try to reflect these pauses in the result also. 
+when there is a subordinating conjunction after ... strictly do not change that ... 
+when the ... occurs in the middle of the clause then strictly do not change that ...
+When there is a coordinating conjunction after ... then replace that ... with ,
+when the ... occurs at the end of a clause and there is no subordinating or coordinating conjunction after that, change that ... to ;
+
     EX: Once you make economics the foremost thing in your life, then you will become very, very gross 
     
     With in each sentence, 
@@ -451,15 +457,19 @@
     Each point is made up of blocks of thoughts.
     Each thought is made up of blocks of information.
     
-    Here Comma (,) is used not just grammatically, but also to mark a brief pause in the speech. So if comma (,) happen to be a place where you would keep a dash (-) or semicolon (;), then change that comma (,) to that accordingly. Otherwise, even if comma (,) happens in a place where it is not needed grammatically, please preserve the comma (,) as it is. Because it represents a pause in the speech there. It is acting like an encryption for time markers here.
+ Here Comma (,) is used not just grammatically, but also to mark a brief pause in the speech. So if comma (,) happen to be a place where you would keep a dash (-) or semicolon (;), then change that comma (,) to that accordingly. Otherwise, even if comma (,) happens in a place where it is not needed grammatically, please preserve the comma (,) as it is. Because it represents a pause in the speech there. It is acting like an encryption for time markers here.
+like: 
+Whenever a summarizing, clarifying, or explanatory phrase follows a list or a series within a sentence (for example: “The qualities of an amoeba, an earthworm, a grasshopper, a buffalo, every kind of beast that evolution went through - elements of those qualities are still with you”), use a dash ( - ) before the explanatory phrase, even if the original transcript uses a comma or other punctuation.
+In such cases, the dash takes precedence over the rule to preserve commas as pauses.
     
-    The catch is … is placed in the original script to mark the pauses in the speech to the dubbing artist. To the extent possible try to reflect these pauses in the result also. 
-    
-    
-    Segmented Script:
 
-    </script>
-  <script type="text/plain" id="prompt3"> Translation to Telugu:
+
+
+    
+    
+Segmented Script:
+</script>
+  <script type="text/plain" id="prompt3">Translation to Telugu:
 
     Instructions for translation:
     
@@ -480,9 +490,8 @@
     
     
     Segmented Script that is to be translated:
-
-  </script>
-  <script type="text/plain" id="prompt4"> Tuning the Language to spoken style - Claude
+</script>
+  <script type="text/plain" id="prompt4">Tuning the Language to spoken style - Claude
 
     I have a translation of an English script; implement the below for the entire script:
     Aspect 1:
@@ -790,8 +799,7 @@
     Yes, please directly give the optimized version. No need to give the original version. And Please don't remove the subjects totally. Remove only when they are really redundant. Do not use English words too much..
     
     Below is the Telugu script to be optimized (if there are multiple scripts, consider each as a totally different script from others):
-
-    </script>
+</script>
   <script type="text/plain" id="prompt5">I have a talk of Sadhguru Translated by two AI Models.
 
     The talk is made up of blocks of points.
@@ -817,9 +825,7 @@
     
     
     Claude Translation:
-
-
-    </script>
+</script>
   <script type="text/plain" id="prompt6">Reframing Sentences with blocks that are not in a natural flow
 
     Below I have  a Telugu dubbing script of a talk by Sadhguru addressing Audience.
@@ -1039,10 +1045,8 @@
 
 
     
-    
-    
     </script>
-  <script type="text/plain" id="prompt7"> Polishing the Script into a day to day spoken style.
+  <script type="text/plain" id="prompt7">Polishing the Script into a day to day spoken style.
     
     Below I have  a Telugu dubbing script of a talk by Sadhguru addressing Audience.
     
@@ -1320,8 +1324,7 @@
     English Script:
     
     
-    Telugu Script:
-  </script>
+    Telugu Script:</script>
   <script type="text/plain" id="prompt8">Breaking into Paragraphs:
     Please process the given dubbing script as per the below instructions.  
     The talk is made up of blocks of points.
@@ -1351,10 +1354,10 @@
     
     
     Text to be Broken into paragraphs:
-
-  </script>
+</script>
 
   <script>
+    
     const message = document.getElementById('message');
     let Punctuated_Transcript = "";
     let Gemini_Translation = "";
@@ -1382,13 +1385,13 @@
     };
 
     const stepNames = {
-      1: "Gemini 2.5 Pro 🔍",
+      1: "Gemini 2.5 Pro 🎙",
       2: "chatGPT 4.1",
       3: "Gemini 2.5 Pro",
       4: "Claude Sonnet 3.5",
       5: "DeepSeek V3",
       6: "Gemini 2.5 Pro",
-      7: "Gemini 2.5 Pro 🔍",
+      7: "Gemini 2.5 Pro 🎙",
       8: "Gemini 2.5 Pro"
     };
 
@@ -1420,6 +1423,7 @@
       document.getElementById(`input${step}`).value = "";
       showMessage("🗑️ Cleared Step " + step);
     }
+    
 
     function clearAllInputs() {
       for (let i = 1; i <= 8; i++) {
@@ -1429,6 +1433,12 @@
         }
       }
       showMessage("🗑️ All input boxes cleared");
+    }
+
+    function copyFollowUp() {
+      const text = "Have you carefully considered the length of the pauses and placed the ... accordingly?";
+      navigator.clipboard.writeText(text);
+      showMessage("💬 Follow-up prompt copied!");
     }
 
     function handleCopy(step) {
@@ -1476,7 +1486,7 @@
         copyButtonText = "📋 Copy Prompt (attach audio file)";
       }
       
-      // Step 1 doesn't have input box or paste/clear buttons
+      // Step 1 has follow-up button
       if (i === 1) {
         stepDiv.innerHTML = `
           <h3>
@@ -1488,6 +1498,7 @@
           <div class="step-result"><strong>📤 Expected Output:</strong> ${results[i]}</div>
           <div class="button-group">
             <button class="copy-btn" onclick="handleCopy(${i})">${copyButtonText}</button>
+            <button class="followup-btn" onclick="copyFollowUp()">💬 Follow-up Prompt</button>
           </div>
         `;
       } else {
