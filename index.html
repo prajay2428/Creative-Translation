@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -415,7 +416,9 @@
     Because it is a spermicide, when the fetus is developing, the role of the sperm is still there … to a certain point. 
     Four months is what is prescribed … I am saying five months - one can start after five months.
 </script>
-  <script type="text/plain" id="prompt2">Linguistic Punctuation
+  
+
+<script type="text/plain" id="prompt2">Linguistic Punctuation
 
     I have a script that is structured as below: 
     This is a dubbing script, The words are intentionally chosen. At any cost don’t change or remove even a single word; Even if it's redundant or grammatically wrong, please keep the words absolutely as it is. Even if it's redundant, keep the words as it is. Because the structure, length and timing needs to be exactly the same - Even the number of alphabets.  
@@ -1043,9 +1046,7 @@ Segmented Script:
     Note: Directly give the optimized version, no need to give the original version in result.
 
 
-
-    
-    </script>
+</script>
   <script type="text/plain" id="prompt7">Polishing the Script into a day to day spoken style.
     
     Below I have  a Telugu dubbing script of a talk by Sadhguru addressing Audience.
@@ -1324,7 +1325,8 @@ Segmented Script:
     English Script:
     
     
-    Telugu Script:</script>
+    Telugu Script:
+</script>
   <script type="text/plain" id="prompt8">Breaking into Paragraphs:
     Please process the given dubbing script as per the below instructions.  
     The talk is made up of blocks of points.
@@ -1353,8 +1355,7 @@ Segmented Script:
     When there is a repeat pattern in the sentences with a different subjet
     
     
-    Text to be Broken into paragraphs:
-</script>
+    Text to be Broken into paragraphs:</script>
 
   <script>
     
@@ -1374,7 +1375,7 @@ Segmented Script:
     };
 
     const results = {
-      1: "Transcription with pauses marked with '…'",
+      1: "Transcription with pauses marked with '...'",
       2: "Transcription with modulation punctuation marks",
       3: "Segmented Translation (Punctuated_Transcript stored)",
       4: "Flow Enhanced Translation (Gemini_Translation stored)",
@@ -1435,8 +1436,13 @@ Segmented Script:
       showMessage("🗑️ All input boxes cleared");
     }
 
-    function copyFollowUp() {
-      const text = "Have you carefully considered the length of the pauses and placed the ... accordingly?";
+    function copyFollowUp(step) {
+      let text = "";
+      if (step === 1) {
+        text = "Have you carefully considered the length of the pauses and placed the ... accordingly?";
+      } else if (step === 2) {
+        text = "Have you carefully followed the given instructions, and kept the ... that comes in the middle of a clause as it is and changed only the ... that comes at the end of a clause - that too only if the specified rule is met?";
+      }
       navigator.clipboard.writeText(text);
       showMessage("💬 Follow-up prompt copied!");
     }
@@ -1486,8 +1492,8 @@ Segmented Script:
         copyButtonText = "📋 Copy Prompt (attach audio file)";
       }
       
-      // Step 1 has follow-up button
-      if (i === 1) {
+      // Steps 1 and 2 have follow-up buttons
+      if (i === 1 || i === 2) {
         stepDiv.innerHTML = `
           <h3>
             <span class="step-number">${i}</span>
@@ -1496,10 +1502,17 @@ Segmented Script:
           </h3>
           <div class="step-description"><strong>📋 Instructions:</strong> ${descriptions[i]}</div>
           <div class="step-result"><strong>📤 Expected Output:</strong> ${results[i]}</div>
+          ${i === 1 ? '' : `<textarea id="input${i}" placeholder="Paste or type content for Step ${i}..."></textarea>
           <div class="button-group">
+            <button class="paste-btn" onclick="handlePaste(${i})">📥 Paste</button>
             <button class="copy-btn" onclick="handleCopy(${i})">${copyButtonText}</button>
-            <button class="followup-btn" onclick="copyFollowUp()">💬 Follow-up Prompt</button>
-          </div>
+            <button class="followup-btn" onclick="copyFollowUp(${i})">💬 Follow-up Prompt</button>
+            <button class="clear-btn" onclick="handleClear(${i})">🗑️ Clear</button>
+          </div>`}
+          ${i === 1 ? `<div class="button-group">
+            <button class="copy-btn" onclick="handleCopy(${i})">${copyButtonText}</button>
+            <button class="followup-btn" onclick="copyFollowUp(${i})">💬 Follow-up Prompt</button>
+          </div>` : ''}
         `;
       } else {
         stepDiv.innerHTML = `
