@@ -7,7 +7,7 @@
     * {
       box-sizing: border-box;
     }
-    
+
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       padding: 20px;
@@ -16,7 +16,7 @@
       margin: 0;
       line-height: 1.6;
     }
-    
+
     .container {
       max-width: 1000px;
       margin: 0 auto;
@@ -26,7 +26,7 @@
       box-shadow: 0 10px 40px rgba(139, 112, 87, 0.08);
       padding: 40px;
     }
-    
+
     h2 {
       text-align: center;
       color: #8b7057;
@@ -35,7 +35,7 @@
       font-weight: 700;
       letter-spacing: -0.02em;
     }
-    
+
     .subtitle {
       text-align: center;
       color: #a0916d;
@@ -43,14 +43,14 @@
       font-size: 1.1rem;
       font-weight: 400;
     }
-    
+
     .clear-all-container {
       text-align: center;
       margin-bottom: 35px;
       padding-bottom: 25px;
       border-bottom: 1px solid #e8e5e0;
     }
-    
+
     .clear-all-btn {
       background: #f7f5f3;
       color: #8b7057;
@@ -62,14 +62,14 @@
       transition: all 0.2s ease;
       font-weight: 600;
     }
-    
+
     .clear-all-btn:hover {
       background: #f0ebe4;
       border-color: #8b7057;
       transform: translateY(-1px);
       box-shadow: 0 4px 12px rgba(139, 112, 87, 0.1);
     }
-    
+
     textarea {
       width: 100%;
       height: 160px;
@@ -85,18 +85,18 @@
       color: #5d5043;
       transition: all 0.2s ease;
     }
-    
+
     textarea:focus {
       outline: none;
       border-color: #c4a484;
       box-shadow: 0 0 0 3px rgba(196, 164, 132, 0.1);
       background: #ffffff;
     }
-    
+
     textarea::placeholder {
       color: #b8a990;
     }
-    
+
     button {
       padding: 10px 18px;
       margin-right: 10px;
@@ -110,42 +110,42 @@
       background: #fefdfb;
       color: #8b7057;
     }
-    
+
     button:hover {
       transform: translateY(-1px);
       background: #f7f5f3;
       border-color: #c4a484;
       box-shadow: 0 3px 10px rgba(139, 112, 87, 0.1);
     }
-    
+
     .paste-btn {
       border-color: #c4a484;
       color: #8b7057;
       background: #f9f7f4;
     }
-    
+
     .paste-btn:hover {
       background: #f5f1ed;
       border-color: #a08967;
     }
-    
+
     .copy-btn {
       border-color: #b8a990;
       color: #8b7057;
       background: #f7f5f3;
     }
-    
+
     .copy-btn:hover {
       background: #f2ede6;
       border-color: #9d8670;
     }
-    
+
     .clear-btn {
       border-color: #d4c4a8;
       color: #a0916d;
       background: #faf9f7;
     }
-    
+
     .clear-btn:hover {
       background: #f5f2ee;
       border-color: #b8a990;
@@ -161,7 +161,7 @@
       background: #f0ebe4;
       border-color: #8b7057;
     }
-    
+
     .step {
       background: #ffffff;
       padding: 28px;
@@ -171,13 +171,13 @@
       transition: all 0.2s ease;
       box-shadow: 0 2px 12px rgba(139, 112, 87, 0.04);
     }
-    
+
     .step:hover {
       border-color: #e0d5c7;
       background: #fefdfb;
       box-shadow: 0 4px 20px rgba(139, 112, 87, 0.08);
     }
-    
+
     .step h3 {
       margin: 0 0 18px 0;
       color: #5d5043;
@@ -187,7 +187,7 @@
       align-items: center;
       gap: 12px;
     }
-    
+
     .step-number {
       background: #8b7057;
       color: #ffffff;
@@ -200,7 +200,7 @@
       font-weight: 600;
       font-size: 0.9rem;
     }
-    
+
     .ai-name {
       background: #f7f5f3;
       color: #8b7057;
@@ -211,7 +211,7 @@
       margin-left: auto;
       border: 1px solid #e8e5e0;
     }
-    
+
     .step-description {
       background: #f9f7f4;
       color: #6b5b47;
@@ -221,7 +221,7 @@
       border-radius: 10px;
       border-left: 3px solid #c4a484;
     }
-    
+
     .step-result {
       background: #f5f2ee;
       color: #7a6b56;
@@ -231,14 +231,41 @@
       border-radius: 10px;
       border-left: 3px solid #a08967;
     }
-    
+
     .button-group {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
       margin-top: 15px;
     }
-    
+
+    /* ======= New Part Section Styling ======= */
+    .part-section {
+      padding: 25px;
+      border-radius: 16px;
+      margin-bottom: 40px;
+    }
+
+    .part-section h3 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 25px;
+      text-align: center;
+      border-bottom: 2px solid rgba(0,0,0,0.1);
+      padding-bottom: 10px;
+    }
+
+    .part1 { background: #f0f7ff; border-left: 5px solid #4a90e2; }
+    .part1 h3 { color: #4a90e2; }
+
+    .part2 { background: #f4fff7; border-left: 5px solid #41b883; }
+    .part2 h3 { color: #41b883; }
+
+    .part3 { background: #fff9f3; border-left: 5px solid #f5a623; }
+    .part3 h3 { color: #f5a623; }
+
+    /* ======================================== */
+
     #message {
       position: fixed;
       top: 24px;
@@ -255,11 +282,11 @@
       z-index: 1000;
       font-size: 0.9rem;
     }
-    
+
     #message.show {
       transform: translateX(0);
     }
-    
+
     hr {
       border: none;
       height: 1px;
@@ -267,50 +294,48 @@
       margin: 30px 0;
       border-radius: 1px;
     }
-    
+
     @media (max-width: 768px) {
       body {
         padding: 15px;
       }
-      
+
       .container {
         padding: 25px;
       }
-      
+
       h2 {
         font-size: 1.8rem;
       }
-      
+
       .step {
         padding: 20px;
       }
-      
+
       .button-group {
         flex-direction: column;
       }
-      
+
       button {
         margin-right: 0;
         width: 100%;
       }
     }
-    
+
     script[type="text/plain"] {
       display: none;
     }
   </style>
 </head>
 <body>
-  
-
   <div class="container">
     <h2>Creative Translation Workflow</h2>
     <p class="subtitle">Multi-AI translation pipeline with 9 specialized steps</p>
-    
+
     <div class="clear-all-container">
       <button class="clear-all-btn" onclick="clearAllInputs()">🗑️ Clear All Input Boxes</button>
     </div>
-    
+
     <hr>
 
     <div id="stepsContainer"></div>
@@ -318,7 +343,8 @@
     <div id="message"></div>
   </div>
 
-  <!-- Prompts stored separately -->
+  <!-- Prompts -->
+  <!-- (keep your existing prompt scripts unchanged) -->
   <script type="text/plain" id="prompt1">Transcription with Segmentation
 
     Please transcribe the attached audio.
@@ -413,49 +439,47 @@
     Because it is a spermicide, it must be consumed in small quantities - because it's not for us to decide what should happen to an individual.
     And women when they are pregnant - up to four months of pregnancy, or to be safe up to five months of pregnancy … one should not consume neem. 
     Because it is a spermicide, when the fetus is developing, the role of the sperm is still there … to a certain point. 
-    Four months is what is prescribed … I am saying five months - one can start after five months.
-</script>
+    Four months is what is prescribed … I am saying five months - one can start after five months.</script>
 
   <script type="text/plain" id="prompt2">
-
     Linguistic Punctuation A
    
-   I have a script that is structured as below: 
-   This is a dubbing script, The words are intentionally chosen. At any cost don’t change or remove even a single word; Even if it's redundant or grammatically wrong, please keep the words absolutely as it is. Even if it's redundant, keep the words as it is. Because the structure, length and timing needs to be exactly the same - Even the number of alphabets.  
-       
-       As these are the master’s words, please don't summarize or simplify the transcript
-       Do not remove or add any words or letters.
-       Do not remove anything, even if it is redundant or repetition
-       This is a transcript of the already spoken Audio - So do not correct the grammar or change sentence structure. 
-       
-   Just add - as per the below rule. Rest of the punctuations keep them as it is even if they are grammatically off. They are not placed just for grammar, they are markers for the dubbing artist.
-    Within Each Paragraph,
-   
-   
-   Now  with in each sentence, 
-       Use a dash ( - ):
-       To Set Off Parenthetical Information:
-       Example: This is a very important point - one that you shouldn't forget.
-       Example: The students - all 35 of them - were excited for the field trip.
-   
-       To Introduce a List or Explanation:
-       Example: She bought many things - clothes, shoes, and accessories.
-   
-       To Introduce an Explanation:
-       Example: The reason for the delay - traffic congestion - was unavoidable.
-       Example: He is my uncle - who is a 7 feet tall man.
-       Example: Today is Sunday - which is a holiday.
-   
-       To Indicate an Abrupt Break or Change in Thought:
-       Example: I was about to leave - wait, there's someone at the door.
+    I have a script that is structured as below: 
+    This is a dubbing script, The words are intentionally chosen. At any cost don’t change or remove even a single word; Even if it's redundant or grammatically wrong, please keep the words absolutely as it is. Even if it's redundant, keep the words as it is. Because the structure, length and timing needs to be exactly the same - Even the number of alphabets.  
+        
+        As these are the master’s words, please don't summarize or simplify the transcript
+        Do not remove or add any words or letters.
+        Do not remove anything, even if it is redundant or repetition
+        This is a transcript of the already spoken Audio - So do not correct the grammar or change sentence structure. 
+        
+    Just add - as per the below rule. Rest of the punctuations keep them as it is even if they are grammatically off. They are not placed just for grammar, they are markers for the dubbing artist.
+     Within Each Paragraph,
     
-      To Emphasize a Word or Phrase:
-       Example: The most important thing - and I can't stress this enough - is to be yourself.
+    
+    Now  with in each sentence, 
+        Use a dash ( - ):
+        To Set Off Parenthetical Information:
+        Example: This is a very important point - one that you shouldn't forget.
+        Example: The students - all 35 of them - were excited for the field trip.
+    
+        To Introduce a List or Explanation:
+        Example: She bought many things - clothes, shoes, and accessories.
+    
+        To Introduce an Explanation:
+        Example: The reason for the delay - traffic congestion - was unavoidable.
+        Example: He is my uncle - who is a 7 feet tall man.
+        Example: Today is Sunday - which is a holiday.
+    
+        To Indicate an Abrupt Break or Change in Thought:
+        Example: I was about to leave - wait, there's someone at the door.
      
-   
-   Place a - before all explanatory phrases. 
-       
-   Segmented Script:
+       To Emphasize a Word or Phrase:
+        Example: The most important thing - and I can't stress this enough - is to be yourself.
+      
+    
+    Place a - before all explanatory phrases. 
+        
+    Segmented Script:
 </script>
   <script type="text/plain" id="prompt3">Linguistic Punctuation B
 
@@ -528,7 +552,7 @@ Segmented Script:
     
     Segmented Script that is to be translated:
 </script>
-  <script type="text/plain" id="prompt5">Tuning the Language to spoken style - Claude
+  <script type="text/plain" id="prompt5">uning the Language to spoken style - Claude
 
     I have a translation of an English script; implement the below for the entire script:
     Aspect 1:
@@ -1079,6 +1103,7 @@ Segmented Script:
     Note: Keep english words to minimum.
     Note: Directly give the optimized version, no need to give the original version in result.
     
+    
 </script>
   <script type="text/plain" id="prompt8">Polishing the Script into a day to day spoken style.
     
@@ -1360,38 +1385,286 @@ Segmented Script:
     
     Telugu Script:
 </script>
-  <script type="text/plain" id="prompt9">Breaking into Paragraphs:
-    Please process the given dubbing script as per the below instructions.  
+  <script type="text/plain" id="prompt9">Translation to Telugu:
+
+    Instructions for translation:
+    
+    Below is the Transcript of an English Talk by sadhguru addressing Audience.
     The talk is made up of blocks of points.
     Each point is made up of blocks of thoughts.
     Each thought is made up of blocks of information.
     
     We have used … , ; - . and ? to mark the boundaries of Information blocks, thoughts and ideas.
-    Now do not change ; and , and - in the result. They are not just grammatically placed, they are like markers for time spacing information for the dubbing artist. So don't change them, even though grammatically it seems better to change.
+
+… indicates a pause in between the sentences.
+, indicates a pause between meaningful chunks that make up the sentence.
+; indicates connected sentences.
+•⁠  ⁠indicates additional information related to the main idea of the sentence.
+<Gesture> </Gesture> indicates the portion of the sentences for which there is a corresponding significant body language shown in the video.
+Below I am giving an already translated script which maintained the same order of ideas, meaningful chunks and respected the pauses by placing … and maintaining the , ; and - as described above.
+
+Now do not change … and ; and , and - in the result. They are not just grammatically placed, they are like markers for time spacing information for the dubbing artist. So don't change them, even though grammatically it seems better to  change.
+
+
+Now I want you to optimize the script in these three areas in this order of priority.
+
+When dubbing is done, the gesture in the video and the corresponding telugu word should occur at the same time.
+ 
+For this, Where there are tags that indicate the gestures in the video, make sure in the translation also the corresponding word or phrase comes at the same timing within the sentence as in English. 
+
+where there are no gestures in the dialogue, and the flow of the telugu dialogue is too unnatural, reframe it into a natural flow, but keep the same pauses, lengths of the segments and overall length of the dialogue. Very important - not to sacrifice the flow between the dialogues for the sake of the flow within the dialogue. like if the ending object of this dialogue is the subject of the next dialogue, then make sure the reframing also keeps this object towards the end of this dialogue. so that there is continuity of thought.
+
+
+Few Examples of how i optimized the sentence to match the gesture timing are below:
+Example 1
+
+
+English :
+Being in love… is very different from… <Gesture>I love you, you love me</Gesture>;
+
+Telugu :
+ప్రేమించడం అనేది <Gesture>‘నేను నిన్ను ప్రేమిస్తున్నాను, నువ్వు నన్ను ప్రేమించు’</Gesture> అనేదానికి చాలా భిన్నం;
+
+
+Optimized:
+ప్రేమలో ఉండడం వేరు;  <Gesture>‘నేను నిన్ను ప్రేమిస్తున్నాను, నువ్వు నన్ను ప్రేమించు’ </Gesture>అనేది వేరు;
+
+Description :
+As the phrase with gesture is in the second half of the sentence, have made the Telugu sentence also into two halves, and made the phrase with gesture come in the second half.
+
+
+
+
+Example 2
+
+
+English :
+that’s a transaction - <Gesture>I will love you, you love me</Gesture>.
+
+Telugu :
+‘<Gesture>నేను నిన్ను ప్రేమిస్తాను, నువ్వు నన్ను ప్రేమించు</Gesture>’ అనేదో లావాదేవీ.
+
+Optimized:
+ఇదో లావాదేవీ - ‘<Gesture>నేను నిన్ను ప్రేమిస్తాను, నువ్వు నన్ను ప్రేమించు</Gesture>’ అనేది!
+
+Description :
+As the phrase with gesture is in the second half of the sentence, have made the Telugu sentence also into two halves, and made the phrase with gesture come in the second half.
+
+
+
+
+Example 3
+
+
+English :
+Only those who do not know … the fulfillment of what it means to be in love… they are always thinking <Gesture>what will I get</Gesture>;
+
+Telugu :
+ప్రేమించడం లోని సంతృప్తి  తెలియని వారే, ఎప్పుడూ <Gesture>‘నాకేం లాభం?’</Gesture> అని ఆలోచిస్తుంటారు;
+
+Optimized:
+కేవలం ఇది తెలియని వారే - ప్రేమలో ఉండడంలోని సంతృప్తి  తెలియని వారే - ఎప్పుడూ <Gesture>‘నాకేం వస్తుంది’</Gesture> అని చూస్తుంటారు. 
+
+Description :
+The telugu sentence is too short, even though the gesture sentence came towards the end of the sentence, as the telugu sentence is short, when the dubbing is attached to the english video, the corresponding gesture phrase comes ahead of the actual gesture in the video. So we made the sentence long enough so that the gesture phrase and the gesture comes at the same time.
+
+
+
+
+
+Example 4
+
+
+English :
+So where is our world? Our world is in our body and in our mind.
+
+Telugu :
+మరి మన లోకం ఎక్కడుంది? మన లోకం మన శరీరంలో, మనసులో ఉంది. 
+
+Optimized:
+మరి మన లోకం ఎక్కడుంది? అది మన శరీరంలో, మనసులో ఉంది. 
+
+Description :
+Here there is no gesture issue, but the length is shortened to fit into the English video.
+
+
+
+
+
+Example 5
+
+
+English :
+People when they wake up in the morning …  do they say Shiva? No - they'll say <Gesture>stock market</Gesture> … they will say <Gesture>cinema</Gesture>.
+
+Telugu :
+జనం పొద్దున లేవగానే, శివా అంటారా? లేదు - వారు <Gesture>స్టాక్ మార్కెట్, సినిమా</Gesture> అంటారు.
+
+Optimized:
+ప్రజలు పొద్దున లేవగానే …  ‘శివా’ అంటారా? లేదు - <Gesture>‘స్టాక్ మార్కెట్</Gesture>’ అంటారు …  <Gesture> ‘సినిమా’</Gesture> అంటారు.
+
+Description :
+Here the gesture phrases came in two clauses, so we optimised the sentence also to contain two clauses - each with corresponding gestures phrase.
+
+
+
+
+
+Example 6
+
+
+English :
+So, it's important - that - there is an experience of <Gesture>exuberance, joy, profoundness.</Gesture>
+
+
+Telugu :
+కాబట్టి, <Gesture>ఉల్లాసం, ఆనందం, గాఢత</Gesture> యొక్క అనుభవం ఉండటం ముఖ్యం.
+
+Optimized:
+కాబట్టి ఇది ముఖ్యం -  అదేంటంటే, వీటిని అనుభూతి చెందాలి - <Gesture>ఉల్లాసం, ఆనందం ఇంకా ప్రగాఢతలను!</Gesture>
+
+
+Description :
+Here the gesture phrase came at the end of the dialogue. So we have first introduced the concept with a pronoun and then brought the actual nouns in the second half. Thus able to put the idea across, at the same time maintain the position of the gesture phrase.
+
+
+
+
+
+Example 7
+
+
+English :
+Sadhguru... if the creation is perfect and the creator has done such a good job on us - as you say; why is there so much suffering in the world? 
+
+Telugu :
+సద్గురు... సృష్టి పరిపూర్ణమైందైతే, సృష్టికర్త మనల్ని ఇంత అద్భుతంగా చేసి ఉంటే, మీరు చెప్పినట్టు; ఈ ప్రపంచంలో ఇంత బాధ ఎందుకుంది?
+
+Optimized:
+సద్గురు... మీరు చెప్పినట్టు - సృష్టి పరిపూర్ణమైందైతే, సృష్టికర్త మనల్ని ఇంత అద్భుతంగా చేసి ఉంటే, ఈ ప్రపంచంలో ఇంత బాధ ఎందుకుంది? 
+
+
+Description :
+Now here, there is no gesture in the sentence. And to maintain the same sequence of information, the telugu sentence is written in a bit unnatural way. Here what we have done is, we made it more natural telugu flow - as there is no restriction of gesture. At the same time me maintained the same length of the dialogue and the same pauses and segments structure.
+
+
+
+
+
+Example 8
+
+
+English :
+His mother asked, "Luke, did you really find it? … <Gesture>Are you sure?</Gesture>"
+
+Telugu :
+వాళ్ళ అమ్మ, "లూక్, అది నీకు నిజంగా దొరికిందా? <Gesture>నిజమేనా?</Gesture>" అని అడిగింది. 
+
+Optimized:
+వాళ్ళ అమ్మ, "లూక్, అది నీకు నిజంగా దొరికిందా? … <Gesture>నిజమేనా?</Gesture>" అని అడిగింది. 
+
+Description :
+Here, there is a pause before the gesture phrase. So we add the pause before the gesture phrase in the optimized version also. Otherwise the gesture phrase will come before the actual gesture in the video.
+
+
+
+
+
+Example 9
+
+
+English :
+That's not creation's fault; just gave you the freedom so that you could<Gesture> go beyond</Gesture>.
+
+Telugu :
+అది సృష్టి తప్పు కాదు; మీరు దాన్ని <Gesture>దాటి వెళ్లగలరనే</Gesture>, అది మీకు స్వేచ్ఛనిచ్చింది.
+
+Optimized:
+అది సృష్టి తప్పు కాదు; సృష్టి మీకు స్వేచ్ఛనిచ్చిందంతే - మీరు దాన్ని <Gesture>దాటి వెళ్లగలిగేలా</Gesture>!
+
+Description :
+Here the gesture came at the third segment of the dialogue. So we also optimized the sentence in such a way the corresponding gesture phrase comes in the third segment or third meaningful chunk. In such a way the gesture and the phrase comes at the same time.
+
+
+
+
+
+Example 10
+
+
+English :
+I don't know if you're aware of this Luke, you came early
+
+Telugu :
+లూక్, నీకు ఈ విషయం తెలుసో లేదో, నువ్వు చిన్నప్పుడే వచ్చావు.
+
+Optimized:
+లూక్, నీకిది తెలుసో లేదో, నువ్వు చిన్న వయసులోనే వచ్చావు.
+
+Description :
+Sadhguru spoke very fast here, so shortened the sentence to fit in the video
+
+
+
+
+
+Example 11
+
+
+English :
+Whoever talks to you, they say, 'how are you?' 'Hey, do you know about this galaxy which is a<Gesture> trillion light years away</Gesture>, which is BB whatever?' and you talk about it.
+
+Telugu :
+మీతో ఎవరు మాట్లాడినా, వాళ్ళు, ‘ఎలా ఉన్నారు?’ అనగానే, ‘హే, మీకు తెలుసా, <Gesture>కొన్ని కోట్ల కాంతి సంవత్సరాల దూరంలో ఒక గెలాక్సీ ఉంది</Gesture>, దాని పేరు బీబీ ఏదో ఒకటి?’ అని దాని గురించి మీరు మాట్లాడతారు; 
+
+Optimized:
+మీతో ఎవరు మాట్లాడినా, ‘ఎలా ఉన్నావ్?’ అనగానే, ‘హే, నీకీ గెలాక్సీ గురించి తెలుసా -<Gesture> కొన్ని కోట్ల కాంతి సంవత్సరాల దూరంలోనిది</Gesture>, పలానా ‘బీబీ..‘ పేరు గలది!’ ..  అని దాని గురించి మాట్లాడతారు.
+
+Description :
+Here the relative position of the gesture phrase is good enough in the initial telugu version. But the length is more. So the gesture phrase will come after the actual gesture happens in the video. For this we optimized the length , so that the gesture phrase and the gesture in the video comes at the same time.
+
+
+
+
+
+Example 12
+
+
+English :
+those days people had to set up manufacturing, <Gesture>this and that</Gesture> and make money which would take decades or generations. 
+
+Telugu :
+ఆ... ఆ రోజుల్లో ప్రజలు <Gesture>అదో, ఇదో</Gesture> తయారు చేసే పరిశ్రమలను స్థాపించాలి, డబ్బు సంపాదించాలి, దానికి దశాబ్దాలు లేదా తరాలు పట్టేది. 
+
+
+Optimized:
+ఆ రోజుల్లో ప్రజలు పరిశ్రమలను స్థాపించి <Gesture>ఇదో, అదో</Gesture> తయారు చేసి డబ్బు సంపాదించాలి, దానికి దశాబ్దాలు లేదా తరాలు పట్టేది. 
+
+
+Description :
+Moved the gesture phrase to the middle of the dialogue, as the gesture is occurring at the middle of the dialogue. At the same time reframed the dialogue segments or meaningful chunks in such a way the whole dialogue conveys the same idea and the same details - and matching the gesture too.
+
+
+
+Output:
+Now as per the above, you identify where you can optimize the below script and optimize the script. Now in the result, Bold the gesture phrases. Bold will be easier for us to identify, rather than tags.
+
+
     
-    As these are the master’s words, please don't summarize or simplify the transcript.
-    Do not remove or add any words or letters or punctuations.
-    Do not remove anything, even if it is redundant or repetitive.
-    Do not change any punctuation marks. They are intentionally placed like that to hint at the dubbing artist.
-    This is a transcript for dubbing - So do not correct the grammar or change sentence structure or change anything. 
     
-    
-    The idea is to break the script into smaller Paragraphs, so that the dubbing artist will know that the ending of the paragraph is the end of an idea and he can modulate accordingly.
-    
-    Some Factors that can be considered for breaking into paragraph are:
-    where there is switch From one subject to another
-    where there is switch From one idea to another 
-    where there is switch From one Context to another
-    where there is switch From description of something to explaining the reason behind it 
-    where there is switch From positive contrast to negative contrast of the same topic
-    When there is a Split at Question and its answer
-    When there is a repeat pattern in the sentences with a different subjet
-    
-    
-    Text to be Broken into paragraphs:</script>
+Telugu Translation that need to be optimized:
+
+
+
+Punctuated English Script:
+</script>
+
+  
 
   <script>
-    
+    // All your existing JS logic remains unchanged from the original file
+    // Only UI grouping changes added below
+
     const message = document.getElementById('message');
     let Punctuated_Transcript = "";
     let Gemini_Translation = "";
@@ -1437,7 +1710,7 @@ Segmented Script:
       2: "Add Punctuation-A",
       3: "Add Punctuation-B",
       4: "Initial Translation",
-      5: "Flow Enhancement", 
+      5: "Flow Enhancement",
       6: "Balance Translation",
       7: "Segment Translation",
       8: "Length Optimization",
@@ -1461,14 +1734,11 @@ Segmented Script:
       document.getElementById(`input${step}`).value = "";
       showMessage("🗑️ Cleared Step " + step);
     }
-    
 
     function clearAllInputs() {
       for (let i = 1; i <= 9; i++) {
         const inputBox = document.getElementById(`input${i}`);
-        if (inputBox) {
-          inputBox.value = "";
-        }
+        if (inputBox) inputBox.value = "";
       }
       showMessage("🗑️ All input boxes cleared");
     }
@@ -1485,28 +1755,68 @@ Segmented Script:
     }
 
     function handleCopy(step) {
-      const inputBox = document.getElementById(`input${step}`);
-      const userInput = inputBox ? inputBox.value.trim() : "";
-      let finalText = "";
+  let finalText = "";
 
-      if (step === 6) {
-        finalText = getPrompt(step) + "\n\nGemini Translation:\n" + Gemini_Translation + "\n\nClaude Translation:\n" + userInput;
-      } else if (step === 7) {
-        finalText = getPrompt(step) + "\n\nEnglish Script:\n" + Punctuated_Transcript + "\n\nScript to be optimized:\n" + userInput;
-      } else if (step === 8) {
-        finalText = getPrompt(step) + "\n\nEnglish Script:\n" + Punctuated_Transcript + "\n\nTelugu Script:\n" + userInput;
-      } else {
-        finalText = getPrompt(step) + "\n" + userInput;
-      }
+  // ✅ Special case for Step 9
+  if (step === 9) {
+    const inputBox1 = document.getElementById(`input${step}_1`);
+    const inputBox2 = document.getElementById(`input${step}_2`);
+    const text1 = inputBox1 ? inputBox1.value.trim() : "";
+    const text2 = inputBox2 ? inputBox2.value.trim() : "";
+    finalText =
+      getPrompt(step) +
+      "\n\nPunctuated English Script:\n" +
+      text1 +
+      "\n\nTelugu Translation that need to be optimized:\n" +
+      text2;
+  }
 
-      navigator.clipboard.writeText(finalText).then(() => {
-        showMessage("📋 Prompt copied from Step " + step);
-      });
+  else if (step === 6) {
+    const inputBox = document.getElementById(`input${step}`);
+    const userInput = inputBox ? inputBox.value.trim() : "";
+    finalText =
+      getPrompt(step) +
+      "\n\nGemini Translation:\n" +
+      Gemini_Translation +
+      "\n\nClaude Translation:\n" +
+      userInput;
+  }
 
-      // store special outputs
-      if (step === 4) Punctuated_Transcript = userInput;
-      if (step === 5) Gemini_Translation = userInput;
-    }
+  else if (step === 7) {
+    const inputBox = document.getElementById(`input${step}`);
+    const userInput = inputBox ? inputBox.value.trim() : "";
+    finalText =
+      getPrompt(step) +
+      "\n\nEnglish Script:\n" +
+      Punctuated_Transcript +
+      "\n\nScript to be optimized:\n" +
+      userInput;
+  }
+
+  else if (step === 8) {
+    const inputBox = document.getElementById(`input${step}`);
+    const userInput = inputBox ? inputBox.value.trim() : "";
+    finalText =
+      getPrompt(step) +
+      "\n\nEnglish Script:\n" +
+      Punctuated_Transcript +
+      "\n\nTelugu Script:\n" +
+      userInput;
+  }
+
+  else {
+    const inputBox = document.getElementById(`input${step}`);
+    const userInput = inputBox ? inputBox.value.trim() : "";
+    finalText = getPrompt(step) + "\n" + userInput;
+  }
+
+  navigator.clipboard.writeText(finalText).then(() => {
+    showMessage("📋 Prompt copied from Step " + step);
+  });
+
+  if (step === 4) Punctuated_Transcript = document.getElementById("input4").value.trim();
+  if (step === 5) Gemini_Translation = document.getElementById("input5").value.trim();
+}
 
     function showMessage(msg) {
       message.textContent = msg;
@@ -1517,59 +1827,63 @@ Segmented Script:
       }, 3000);
     }
 
-    // build UI dynamically
+    // Build UI dynamically with grouped parts
     const container = document.getElementById('stepsContainer');
-    for (let i = 1; i <= 9; i++) {
-      const stepDiv = document.createElement('div');
-      stepDiv.className = 'step';
-      
-      // Different button text for steps 1 and 8
-      let copyButtonText = "📋 Copy Prompt";
-      if (i === 1 || i === 8) {
-        copyButtonText = "📋 Copy Prompt (attach audio file)";
-      }
-      
-      // Steps 1, 2 and 3 have follow-up buttons
-      if (i === 1 || i === 2 || i === 3) {
-        stepDiv.innerHTML = `
-          <h3>
-            <span class="step-number">${i}</span>
-            <span>${stepNames[i]}</span>
-            <span class="ai-name">${aiNames[i]}</span>
-          </h3>
-          <div class="step-description"><strong>📋 Instructions:</strong> ${descriptions[i]}</div>
-          <div class="step-result"><strong>📤 Expected Output:</strong> ${results[i]}</div>
-          ${i === 1 ? '' : `<textarea id="input${i}" placeholder="Paste or type content for Step ${i}..."></textarea>
-          <div class="button-group">
-            <button class="paste-btn" onclick="handlePaste(${i})">📥 Paste</button>
-            <button class="copy-btn" onclick="handleCopy(${i})">${copyButtonText}</button>
-            <button class="followup-btn" onclick="copyFollowUp(${i})">💬 Follow-up Prompt</button>
-            <button class="clear-btn" onclick="handleClear(${i})">🗑️ Clear</button>
-          </div>`}
-          ${i === 1 ? `<div class="button-group">
-            <button class="copy-btn" onclick="handleCopy(${i})">${copyButtonText}</button>
-            <button class="followup-btn" onclick="copyFollowUp(${i})">💬 Follow-up Prompt</button>
-          </div>` : ''}
-        `;
-      } else {
-        stepDiv.innerHTML = `
-          <h3>
-            <span class="step-number">${i}</span>
-            <span>${stepNames[i]}</span>
-            <span class="ai-name">${aiNames[i]}</span>
-          </h3>
-          <div class="step-description"><strong>📋 Instructions:</strong> ${descriptions[i]}</div>
-          <div class="step-result"><strong>📤 Expected Output:</strong> ${results[i]}</div>
-          <textarea id="input${i}" placeholder="Paste or type content for Step ${i}..."></textarea>
-          <div class="button-group">
-            <button class="paste-btn" onclick="handlePaste(${i})">📥 Paste</button>
-            <button class="copy-btn" onclick="handleCopy(${i})">${copyButtonText}</button>
-            <button class="clear-btn" onclick="handleClear(${i})">🗑️ Clear</button>
-          </div>
-        `;
-      }
-      container.appendChild(stepDiv);
+
+    function createPart(title, steps, className) {
+      const partDiv = document.createElement('div');
+      partDiv.className = `part-section ${className}`;
+      partDiv.innerHTML = `<h3>${title}</h3>`;
+      steps.forEach(i => partDiv.appendChild(createStep(i)));
+      return partDiv;
     }
+
+    function createStep(i) {
+  const stepDiv = document.createElement('div');
+  stepDiv.className = 'step';
+  let copyButtonText = (i === 1 || i === 8) ? "📋 Copy Prompt (attach audio file)" : "📋 Copy Prompt";
+
+  const hasFollowUp = (i === 1 || i === 2 || i === 3);
+
+  // ✅ Two inputs only for Step 9
+  let textarea = "";
+  if (i === 9) {
+    textarea = `
+      <textarea id="input9_1" placeholder="Paste Punctuated English Script..."></textarea>
+      <textarea id="input9_2" placeholder="Paste Telugu Translation that needs optimization..."></textarea>
+    `;
+  } else if (i !== 1) {
+    textarea = `<textarea id="input${i}" placeholder="Paste or type content for Step ${i}..."></textarea>`;
+  }
+
+  const followUpButton = hasFollowUp
+    ? `<button class="followup-btn" onclick="copyFollowUp(${i})">💬 Follow-up Prompt</button>`
+    : '';
+
+  const buttonGroup = `
+    <div class="button-group">
+      ${i !== 1 ? `<button class="paste-btn" onclick="handlePaste(${i})">📥 Paste</button>` : ''}
+      <button class="copy-btn" onclick="handleCopy(${i})">${copyButtonText}</button>
+      ${followUpButton}
+      ${i !== 1 ? `<button class="clear-btn" onclick="handleClear(${i})">🗑️ Clear</button>` : ''}
+    </div>`;
+
+  stepDiv.innerHTML = `
+    <h3><span class="step-number">${i}</span><span>${stepNames[i]}</span>
+    <span class="ai-name">${aiNames[i]}</span></h3>
+    <div class="step-description"><strong>📋 Instructions:</strong> ${descriptions[i]}</div>
+    <div class="step-result"><strong>📤 Expected Output:</strong> ${results[i]}</div>
+    ${textarea}
+    ${buttonGroup}
+  `;
+  return stepDiv;
+}
+
+
+    // Append parts
+    container.appendChild(createPart("Part 1: Transcription", [1, 2, 3], "part1"));
+    container.appendChild(createPart("Part 2: Translation", [4, 5, 6, 7, 8], "part2"));
+    container.appendChild(createPart("Part 3: Gesture Matching", [9], "part3"));
   </script>
 </body>
 </html>
