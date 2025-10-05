@@ -442,46 +442,49 @@
     Four months is what is prescribed … I am saying five months - one can start after five months.</script>
 
   <script type="text/plain" id="prompt2">
-    Linguistic Punctuation A
-   
-    I have a script that is structured as below: 
-    This is a dubbing script, The words are intentionally chosen. At any cost don’t change or remove even a single word; Even if it's redundant or grammatically wrong, please keep the words absolutely as it is. Even if it's redundant, keep the words as it is. Because the structure, length and timing needs to be exactly the same - Even the number of alphabets.  
-        
-        As these are the master’s words, please don't summarize or simplify the transcript
-        Do not remove or add any words or letters.
-        Do not remove anything, even if it is redundant or repetition
-        This is a transcript of the already spoken Audio - So do not correct the grammar or change sentence structure. 
-        
-    Just add - as per the below rule. Rest of the punctuations keep them as it is even if they are grammatically off. They are not placed just for grammar, they are markers for the dubbing artist.
-     Within Each Paragraph,
+    Linguistic Punctuation
+
+I have a script that is structured as below: 
+This is a dubbing script, The words are intentionally chosen. At any cost don’t change or remove even a single word; Even if it's redundant or grammatically wrong, please keep the words absolutely as it is. Even if it's redundant, keep the words as it is. Because the structure, length and timing needs to be exactly the same - Even the number of alphabets.  
     
+    As these are the master’s words, please don't summarize or simplify the transcript
+    Do not remove or add any words or letters.
+    Do not remove anything, even if it is redundant or repetition
+    This is a transcript of the already spoken Audio - So do not correct the grammar or change sentence structure. 
     
-    Now  with in each sentence, 
-        Use a dash ( - ):
-        To Set Off Parenthetical Information:
-        Example: This is a very important point - one that you shouldn't forget.
-        Example: The students - all 35 of them - were excited for the field trip.
+Just add - as per the below rule. Rest of the punctuations keep them as it is even if they are grammatically off. They are not placed just for grammar, they are markers for the dubbing artist.
+ Within Each Paragraph,
+
+
+Now  with in each sentence, 
+    Use a dash ( - ):
+    To Set Off Parenthetical Information:
+    Example: This is a very important point - one that you shouldn't forget.
+    Example: The students - all 35 of them - were excited for the field trip.
+
+    To Introduce a List or Explanation:
+    Example: She bought many things - clothes, shoes, and accessories.
+
+    To Introduce an Explanation:
+    Example: The reason for the delay - traffic congestion - was unavoidable.
+    Example: He is my uncle - who is a 7 feet tall man.
+    Example: Today is Sunday - which is a holiday.
+
+    To Indicate an Abrupt Break or Change in Thought:
+    Example: I was about to leave - wait, there's someone at the door.
+ 
+   To Emphasize a Word or Phrase:
+    Example: The most important thing - and I can't stress this enough - is to be yourself.
+  
+
+Place a - before all explanatory phrases provided the below condition is met.
+Condition: there is a , or … in the given english script before that explanatory phrase.
     
-        To Introduce a List or Explanation:
-        Example: She bought many things - clothes, shoes, and accessories.
-    
-        To Introduce an Explanation:
-        Example: The reason for the delay - traffic congestion - was unavoidable.
-        Example: He is my uncle - who is a 7 feet tall man.
-        Example: Today is Sunday - which is a holiday.
-    
-        To Indicate an Abrupt Break or Change in Thought:
-        Example: I was about to leave - wait, there's someone at the door.
-     
-       To Emphasize a Word or Phrase:
-        Example: The most important thing - and I can't stress this enough - is to be yourself.
-      
-    
-    Place a - before all explanatory phrases. 
-        
-    Segmented Script:
+Segmented Script:
+
 </script>
-  <script type="text/plain" id="prompt3">Linguistic Punctuation B
+  <script type="text/plain" id="prompt3">
+    Linguistic Punctuation
 
     I have a script that is structured as below: 
 This is a dubbing script, The words are intentionally chosen. At any cost don’t change or remove even a single word; Even if it's redundant or grammatically wrong, please keep the words absolutely as it is. Even if it's redundant, keep the words as it is. Because the structure, length and timing needs to be exactly the same - Even the number of alphabets.  
@@ -529,6 +532,7 @@ Here Comma (,) is used not just grammatically, but also to mark a brief pause in
     
     
 Segmented Script:
+
 </script>
   <script type="text/plain" id="prompt4">Translation to Telugu:
 
@@ -1385,7 +1389,8 @@ Segmented Script:
     
     Telugu Script:
 </script>
-  <script type="text/plain" id="prompt9">Translation to Telugu:
+  <script type="text/plain" id="prompt9">
+    Translation to Telugu:
 
     Instructions for translation:
     
@@ -1399,7 +1404,7 @@ Segmented Script:
 … indicates a pause in between the sentences.
 , indicates a pause between meaningful chunks that make up the sentence.
 ; indicates connected sentences.
-•⁠  ⁠indicates additional information related to the main idea of the sentence.
+- indicates additional information related to the main idea of the sentence.
 <Gesture> </Gesture> indicates the portion of the sentences for which there is a corresponding significant body language shown in the video.
 Below I am giving an already translated script which maintained the same order of ideas, meaningful chunks and respected the pauses by placing … and maintaining the , ; and - as described above.
 
@@ -1647,16 +1652,8 @@ Moved the gesture phrase to the middle of the dialogue, as the gesture is occurr
 
 
 Output:
-Now as per the above, you identify where you can optimize the below script and optimize the script. Now in the result, Bold the gesture phrases. Bold will be easier for us to identify, rather than tags.
+Now as per the above, you identify where you can optimize the below script and optimize the script. Now in the result, Bold the gesture phrases. Bold will be easier for us to identify, rather than tags. So no tags in the result, instead just bold those phrases.
 
-
-    
-    
-Telugu Translation that need to be optimized:
-
-
-
-Punctuated English Script:
 </script>
 
   
@@ -1731,25 +1728,40 @@ Punctuated English Script:
     }
 
     function handleClear(step) {
-      document.getElementById(`input${step}`).value = "";
-      showMessage("🗑️ Cleared Step " + step);
-    }
+  // Special handling for Step 9 (two input boxes)
+  if (step === 9) {
+    const box1 = document.getElementById(`input9_1`);
+    const box2 = document.getElementById(`input9_2`);
+    if (box1) box1.value = "";
+    if (box2) box2.value = "";
+  } else {
+    const box = document.getElementById(`input${step}`);
+    if (box) box.value = "";
+  }
+  showMessage("🗑️ Cleared Step " + step);
+}
 
-    function clearAllInputs() {
-      for (let i = 1; i <= 9; i++) {
-        const inputBox = document.getElementById(`input${i}`);
-        if (inputBox) inputBox.value = "";
-      }
-      showMessage("🗑️ All input boxes cleared");
+function clearAllInputs() {
+  for (let i = 1; i <= 9; i++) {
+    if (i === 9) {
+      const box1 = document.getElementById(`input9_1`);
+      const box2 = document.getElementById(`input9_2`);
+      if (box1) box1.value = "";
+      if (box2) box2.value = "";
+    } else {
+      const inputBox = document.getElementById(`input${i}`);
+      if (inputBox) inputBox.value = "";
     }
+  }
+  showMessage("🗑️ All input boxes cleared");
+}
+
 
     function copyFollowUp(step) {
       let text = "";
       if (step === 1) {
         text = "Have you carefully considered the length of the pauses and placed the ... accordingly?";
-      } else if (step === 2 || step === 3) {
-        text = "Have you carefully followed the given instructions, and kept the ... that comes in the middle of a clause as it is and changed only the ... that comes at the end of a clause - that too only if the specified rule is met?";
-      }
+      } 
       navigator.clipboard.writeText(text);
       showMessage("💬 Follow-up prompt copied!");
     }
@@ -1843,7 +1855,7 @@ Punctuated English Script:
   stepDiv.className = 'step';
   let copyButtonText = (i === 1 || i === 8) ? "📋 Copy Prompt (attach audio file)" : "📋 Copy Prompt";
 
-  const hasFollowUp = (i === 1 || i === 2 || i === 3);
+  const hasFollowUp = (i === 1 );
 
   // ✅ Two inputs only for Step 9
   let textarea = "";
@@ -1881,9 +1893,9 @@ Punctuated English Script:
 
 
     // Append parts
-    container.appendChild(createPart("Part 1: Transcription", [1, 2, 3], "part1"));
-    container.appendChild(createPart("Part 2: Translation", [4, 5, 6, 7, 8], "part2"));
-    container.appendChild(createPart("Part 3: Gesture Matching", [9], "part3"));
+    container.appendChild(createPart("Part 1: Transcribing", [1, 2, 3], "part1"));
+    container.appendChild(createPart("Part 2: Translating", [4, 5, 6, 7, 8], "part2"));
+    container.appendChild(createPart("Part 3: Aligning with Gestures", [9], "part3"));
   </script>
 </body>
 </html>
