@@ -375,6 +375,19 @@
   padding: 1px 4px;
 }
 
+
+.green-highlight {
+  background-color: #05fd05; /* A soft, clear green */
+  border-radius: 4px;
+  padding: 1px 4px;
+}
+
+.yellow-highlight {
+  background-color: #fbfb00; /* A soft, pleasant yellow */
+  border-radius: 4px;
+  padding: 1px 4px;
+}
+
 /* ======= Scroll to Top Button Styling (Updated) ======= */
 /* ======= Scroll to Top Button Styling (Corrected) ======= */
 #scrollToTopBtn {
@@ -2327,6 +2340,11 @@ function clearAllInputs() {
     highlighterBox.innerHTML = '';
   }
 
+  const dualHighlighterBox = document.getElementById('dual-highlight-box');
+  if (dualHighlighterBox) {
+    dualHighlighterBox.innerHTML = '';
+  }
+
   showMessage("🗑️ All input boxes cleared");
 }
 
@@ -2672,6 +2690,136 @@ function copyFromHighlighter() {
   }
 }
 
+// --- ADD THESE FOUR NEW FUNCTIONS ---
+
+// --- Dual Highlighter Tool Functions ---
+
+function pasteIntoDualHighlighter() {
+  const box = document.getElementById('dual-highlight-box');
+  if (box) {
+    box.focus();
+    navigator.clipboard.read().then(items => {
+      for (const item of items) {
+        if (item.types.includes('text/html')) {
+          item.getType('text/html').then(blob => blob.text().then(html => {
+            box.innerHTML = html;
+            showMessage('✅ Pasted rich text!');
+          }));
+          return;
+        }
+      }
+      navigator.clipboard.readText().then(text => {
+        box.innerText = text;
+        showMessage('✅ Pasted plain text!');
+      });
+    });
+  }
+}
+
+// REPLACE THE ENTIRE applyDualHighlight FUNCTION WITH THIS CORRECTED VERSION
+
+function applyDualHighlight() {
+  const box = document.getElementById('dual-highlight-box');
+  if (!box || !box.innerHTML.trim()) {
+    showMessage('⚠️ Box is empty. Paste some content first.');
+    return;
+  }
+
+  // Define the colors we will apply directly as inline styles
+  const greenColor = '#05fd05';
+  const yellowColor = '#fbfb00';
+
+  // --- Start of Correct, Surgical DOM-Based Logic ---
+
+  // We get ALL spans in the box to check them for styles.
+  const allSpans = Array.from(box.querySelectorAll('span'));
+
+  allSpans.forEach(span => {
+    // Check for BOLD styling
+    if (span.style.fontWeight === 'bold' || parseInt(span.style.fontWeight) >= 700) {
+      // Un-bold the text
+      span.style.fontWeight = 'normal';
+      // Apply the green highlight directly
+      span.style.backgroundColor = greenColor;
+    }
+    
+    // Check for ITALIC styling
+    if (span.style.fontStyle === 'italic') {
+      // Un-italicize the text
+      span.style.fontStyle = 'normal';
+      // Apply the yellow highlight directly
+      span.style.backgroundColor = yellowColor;
+    }
+  });
+
+  // Now, handle the simple fallback tags (<b>, <i>, etc.)
+  
+  // Handle <b> and <strong>
+  const boldTags = Array.from(box.querySelectorAll('b, strong'));
+  boldTags.forEach(tag => {
+    const newSpan = document.createElement('span');
+    newSpan.style.backgroundColor = greenColor;
+    newSpan.innerHTML = tag.innerHTML;
+    tag.parentNode.replaceChild(newSpan, tag);
+  });
+  
+  // Handle <i> and <em>
+  const italicTags = Array.from(box.querySelectorAll('i, em'));
+  italicTags.forEach(tag => {
+    const newSpan = document.createElement('span');
+    newSpan.style.backgroundColor = yellowColor;
+    newSpan.innerHTML = tag.innerHTML;
+    tag.parentNode.replaceChild(newSpan, tag);
+  });
+
+  showMessage('✨ Highlights applied! (Bold: Green, Italic: Yellow)');
+}
+
+
+function clearDualHighlighter() {
+  const box = document.getElementById('dual-highlight-box');
+  if (box) {
+    box.innerHTML = '';
+    showMessage('🗑️ Dual highlighter box cleared.');
+  }
+}
+
+function copyFromDualHighlighter() {
+  const box = document.getElementById('dual-highlight-box');
+  if (!box || !box.innerHTML.trim()) {
+    showMessage('⚠️ Box is empty, nothing to copy.');
+    return;
+  }
+  
+  const tempDiv = document.createElement('div');
+  tempDiv.innerHTML = box.innerHTML;
+
+  // Add inline styles for both green and yellow highlights
+  tempDiv.querySelectorAll('.green-highlight').forEach(span => {
+    span.style.backgroundColor = '#05fd05';
+  });
+  tempDiv.querySelectorAll('.yellow-highlight').forEach(span => {
+    span.style.backgroundColor = '#fbfb00';
+  });
+  
+  // Clean up all class attributes before copying
+  tempDiv.querySelectorAll('span').forEach(span => span.removeAttribute('class'));
+
+  try {
+    const htmlContent = tempDiv.innerHTML;
+    const textContent = box.innerText;
+    const blobHtml = new Blob([htmlContent], { type: 'text/html' });
+    const blobText = new Blob([textContent], { type: 'text/plain' });
+    const clipboardItem = new ClipboardItem({ 'text/html': blobHtml, 'text/plain': blobText });
+    navigator.clipboard.write([clipboardItem]).then(() => {
+      showMessage('✅ Copied dual-highlighted text!');
+    });
+  } catch (error) {
+    console.error('Failed to copy rich text:', error);
+    showMessage('❌ Could not copy content.');
+  }
+}
+
 // --- ADD THIS NEW FUNCTION AFTER applyHighlight ---
 
 
@@ -2781,6 +2929,22 @@ function createHighlighterTool() {
   `;
   return toolDiv;
 }
+
+// --- ADD THIS NEW FUNCTION ---
+
+function createDualHighlighterTool() {
+  const toolDiv = document.createElement('div');
+  toolDiv.className = 'part-section part3'; // Using the orange theme
+  toolDiv.innerHTML = `
+    <h3>Dual Style Highlighter</h3>
+    <div id="dual-highlight-box" class="editable" contenteditable="true" data-placeholder="Paste script with bold/italic text here..."></div>
+    <div class="button-group" style="justify-content: center; margin-top: 20px;">
+      <button class="convert-btn" style="background-color: #f5a623; color: white; border-color: #c48b20;" onclick="applyDualHighlight()">🎨 Apply Highlights</button>
+      <button class="clear-btn" onclick="clearDualHighlighter()">🗑️ Clear</button>
+    </div>
+  `;
+  return toolDiv;
+}
 // --- END OF NEW FUNCTION ---
 
 // Append parts
@@ -2793,7 +2957,8 @@ container.appendChild(createHighlighterTool());
 
 container.appendChild(createPart("Part 4: Fine Tuning", [10], "part4"));
 
-
+// ADD THE SECOND HIGHLIGHTER TOOL AFTER STEP 10
+container.appendChild(createDualHighlighterTool());
 
 
 
