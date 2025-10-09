@@ -2260,52 +2260,78 @@ Below are the English and Telugu scripts.
 
 
   // ================== FIX 2: USE THE CORRECT, SINGLE handlePaste FUNCTION ==================
-  function handlePaste(step) {
-    navigator.clipboard.readText().then(clipText => {
-      if (step === 9) {
-        // Special handling for Step 9's contenteditable div
-        const box1 = document.getElementById(`input9_1`);
-        if (box1) {
-          box1.innerHTML = clipText; // Use .innerHTML to paste rich text
-          showMessage("✅ Pasted into Step " + step);
+ // REPLACE THE OLD handlePaste FUNCTION WITH THIS
+
+function handlePaste(step, boxNumber = 1) {
+    navigator.clipboard.read().then(items => {
+        let foundHtml = false;
+        for (const item of items) {
+            if (item.types.includes('text/html')) {
+                item.getType('text/html').then(blob => {
+                    blob.text().then(html => {
+                        let targetBox;
+                        if (step === 10) {
+                            targetBox = document.getElementById(`input10_${boxNumber}`);
+                        } else {
+                            targetBox = document.getElementById(`input${step}_1`);
+                        }
+
+                        if (targetBox) {
+                            targetBox.innerHTML = html;
+                            showMessage(`✅ Pasted rich text into Step ${step}, Box ${boxNumber}`);
+                        }
+                    });
+                });
+                foundHtml = true;
+                break;
+            }
         }
-      } else if (step === 10) {
-          // Special handling for Step 10's first box
-          const box3 = document.getElementById(`input10_1`);
-          if (box3) {
-              box3.value = clipText;
-              showMessage("✅ Pasted into Step " + step);
-          }
-      } else {
-        // Standard handling for all other steps
-        const box = document.getElementById(`input${step}`);
-        if (box) {
-          box.value = clipText;
-          showMessage("✅ Pasted into Step " + step);
+        if (!foundHtml) {
+            navigator.clipboard.readText().then(text => {
+                let targetBox;
+                if (step === 10) {
+                    targetBox = document.getElementById(`input10_${boxNumber}`);
+                } else if (step === 9) {
+                     targetBox = document.getElementById(`input9_1`);
+                } else {
+                    targetBox = document.getElementById(`input${step}`);
+                }
+                
+                if (targetBox) {
+                   if(targetBox.nodeName === "TEXTAREA") {
+                     targetBox.value = text;
+                   } else {
+                     targetBox.innerText = text;
+                   }
+                   showMessage(`✅ Pasted plain text into Step ${step}`);
+                }
+            });
         }
-      }
     }).catch(err => {
-      console.error('Failed to read clipboard contents: ', err);
-      showMessage("❌ Could not paste from clipboard.");
+        console.error('Failed to read clipboard contents: ', err);
+        showMessage("❌ Could not paste from clipboard.");
     });
-  }
+}
   // ======================================================================================
 
-  // REPLACE THE OLD handleClear FUNCTION WITH THIS
+  
+// REPLACE YOUR OLD clearAllInputs FUNCTION WITH THIS
+
+// --- ADD THESE TWO FUNCTIONS BACK INTO YOUR SCRIPT ---
 
 function handleClear(step) {
   if (step === 9) {
-    // Special handling for Step 9
+    // Logic for Step 9
     const box1 = document.getElementById(`input9_1`);
     const box2 = document.getElementById(`input9_2`);
     if (box1) box1.innerHTML = "";
     if (box2) box2.value = "";
   } else if (step === 10) {
-    // --- ADDED: Special handling for Step 10 ---
-    const box1 = document.getElementById(`input10_1`); // This is the div
-    const box2 = document.getElementById(`input10_2`); // This is the textarea
-    if (box1) box1.innerHTML = ""; // Clear a div with .innerHTML
-    if (box2) box2.value = "";     // Clear a textarea with .value
+    // Logic for Step 10
+    const box1 = document.getElementById(`input10_1`);
+    const box2 = document.getElementById(`input10_2`);
+    if (box1) box1.innerHTML = "";
+    if (box2) box2.innerHTML = "";
   } else {
     // Standard handling for all other steps
     const box = document.getElementById(`input${step}`);
@@ -2314,17 +2340,21 @@ function handleClear(step) {
   showMessage("🗑️ Cleared Step " + step);
 }
 
-// REPLACE YOUR OLD clearAllInputs FUNCTION WITH THIS CORRECTED VERSION
-
 function clearAllInputs() {
   // Loop through all 10 steps
   for (let i = 1; i <= 10; i++) {
-    // Steps 9 and 10 have a special structure (div + textarea)
-    if (i === 9 || i === 10) {
-      const box1 = document.getElementById(`input${i}_1`); // The div
-      const box2 = document.getElementById(`input${i}_2`); // The textarea
-      if (box1) box1.innerHTML = ""; // Clear the div correctly
-      if (box2) box2.value = "";     // Clear the textarea
+    if (i === 9) {
+      // Special logic for Step 9 (div + textarea)
+      const box1 = document.getElementById(`input9_1`);
+      const box2 = document.getElementById(`input9_2`);
+      if (box1) box1.innerHTML = "";
+      if (box2) box2.value = "";
+    } else if (i === 10) {
+      // Special logic for Step 10 (div + div)
+      const box1 = document.getElementById(`input10_1`);
+      const box2 = document.getElementById(`input10_2`);
+      if (box1) box1.innerHTML = "";
+      if (box2) box2.innerHTML = "";
     } else {
       // Handle standard textareas for other steps
       const inputBox = document.getElementById(`input${i}`);
@@ -2334,7 +2364,7 @@ function clearAllInputs() {
     }
   }
 
-  // --- ADDED: Separately clear the highlighter tool's box ---
+  // Clear the separate highlighter tools
   const highlighterBox = document.getElementById('highlight-box');
   if (highlighterBox) {
     highlighterBox.innerHTML = '';
@@ -2538,7 +2568,48 @@ function transformStep10() {
 
   showMessage("✨ Converted bold to <context> and italic to <intention>!");
 }
+// --- ADD THIS NEW FUNCTION ---
 
+// REPLACE THE OLD transformTeluguTags FUNCTION WITH THIS
+// REPLACE THE ENTIRE transformTeluguTags FUNCTION WITH THIS CORRECTED VERSION
+
+function transformTeluguTags() {
+  // Target the second contenteditable div in Step 10
+  const editableDiv = document.getElementById('input10_2');
+  if (!editableDiv) {
+    showMessage("⚠️ No editable field found for Step 10 Box 2");
+    return;
+  }
+
+  let html = editableDiv.innerHTML;
+
+  // --- Step 1: Replace formatting with temporary, non-HTML markers ---
+  // This prevents them from being stripped out in the next step.
+
+  // Replace Italic tags with <intention> markers
+  html = html.replace(/<(i|em)\b[^>]*>(.*?)<\/\1>/gi, '§§I_START§§$2§§I_END§§');
+  html = html.replace(/<span\b[^>]*font-style:\s*italic[^>]*>(.*?)<\/span>/gi, '§§I_START§§$1§§I_END§§');
+
+  // Replace Bold tags with <context> markers
+  html = html.replace(/<(b|strong)\b[^>]*>(.*?)<\/\1>/gi, '§§C_START§§$2§§C_END§§');
+  html = html.replace(/<span\b[^>]*font-weight:\s*(?:bold|700|800|900)[^>]*>(.*?)<\/span>/gi, '§§C_START§§$1§§C_END§§');
+
+  // --- Step 2: Clean up all remaining HTML to get plain text with our markers ---
+  const tempDiv = document.createElement('div');
+  tempDiv.innerHTML = html;
+  let textContent = tempDiv.textContent || tempDiv.innerText;
+
+  // --- Step 3: Replace the markers with the final, visible tags ---
+  // The 'g' flag is crucial to replace all occurrences.
+  textContent = textContent.replace(/§§I_START§§/g, '<intention>').replace(/§§I_END§§/g, '</intention>');
+  textContent = textContent.replace(/§§C_START§§/g, '<context>').replace(/§§C_END§§/g, '</context>');
+
+  // --- Step 4: Update the div with the final tagged text ---
+  // We use .innerText to ensure the tags are displayed as text, not rendered as HTML.
+  editableDiv.innerText = textContent.trim();
+
+  showMessage("✨ Applied tags to Telugu script!");
+}
 // ADD THESE THREE NEW FUNCTIONS
 
 // --- Highlighter Tool Functions ---
@@ -2835,63 +2906,58 @@ function copyFromDualHighlighter() {
     return partDiv;
   }
 
+// REPLACE YOUR ENTIRE createStep FUNCTION IN test.html WITH THIS CORRECTED VERSION
+
+// REPLACE YOUR ENTIRE createStep FUNCTION WITH THIS
 
 function createStep(i) {
     const stepDiv = document.createElement('div');
     stepDiv.className = 'step';
     let copyButtonText = (i === 1 || i === 8) ? "📋 Copy Prompt (attach audio file)" : "📋 Copy Prompt";
 
-    // --- Define the input area based on the step number ---
     let textarea = "";
     if (i === 9) {
-      // Step 9 has a contenteditable div and a textarea
       textarea = `
         <div id="input9_1" class="editable" contenteditable="true" data-placeholder="Paste Punctuated English Script..."></div>
         <textarea id="input9_2" placeholder="Paste Telugu Translation that needs optimization..."></textarea>
       `;
     } else if (i === 10) {
-      // Step 10 now also has a contenteditable div for rich text and a textarea
       textarea = `
-        <div id="input10_1" class="editable" contenteditable="true" data-placeholder="Paste rich text (with bold/italic) here..."></div>
-        <textarea id="input10_2" placeholder="Paste Tagged Telugu Script..."></textarea>
+        <div id="input10_1" class="editable" contenteditable="true" data-placeholder="Paste English script with bold/italic here..."></div>
+        <div id="input10_2" class="editable" contenteditable="true" data-placeholder="Paste Telugu script with bold/italic for tagging..."></div>
       `;
     } else if (i !== 1) {
-      // All other steps (except 1) have a standard textarea
       textarea = `<textarea id="input${i}" placeholder="Paste or type content for Step ${i}..."></textarea>`;
     }
 
-    // --- Define the button group based on the step number ---
+    // Default button group WITHOUT the Paste button
     let buttonGroup = `
       <div class="button-group">
-        ${i !== 1 ? `<button class="paste-btn" onclick="handlePaste(${i})">📥 Paste</button>` : ''}
         <button class="copy-btn" onclick="handleCopy(${i})">${copyButtonText}</button>
         ${followUpButtonHTML(i)}
         ${i !== 1 ? `<button class="clear-btn" onclick="handleClear(${i})">🗑️ Clear</button>` : ''}
       </div>`;
 
     if (i === 9) {
-      // Special buttons for Step 9
+      // Buttons for Step 9 WITHOUT the Paste button
       buttonGroup = `
         <div class="button-group">
-          <button class="paste-btn" onclick="handlePaste(${i})">📥 Paste</button>
-          <button class="copy-btn" onclick="handleCopy(${i})">${copyButtonText}</button>
           <button class="convert-btn" onclick="wrapBoldWithGesture(${i})">🔤 Convert Bold → Gesture</button>
+          <button class="copy-btn" onclick="handleCopy(${i})">${copyButtonText}</button>
           <button class="clear-btn" onclick="handleClear(${i})">🗑️ Clear</button>
         </div>`;
     }
 
     if (i === 10) {
-      // Special buttons for Step 10
+      // Buttons for Step 10 WITHOUT the Paste buttons
       buttonGroup = `
         <div class="button-group">
-          <button class="paste-btn" onclick="handlePaste(${i})">📥 Paste</button>
-          <button class="copy-btn" onclick="handleCopy(${i})">${copyButtonText}</button>
-          <button class="convert-btn" onclick="transformStep10()">🔤 Convert B/I → Tags</button>
+          <button class="convert-btn" onclick="transformTeluguTags()">🔤 Convert Telugu B/I → Tags</button>
+          <button class="copy-btn" onclick="handleCopy(${i})">${copyButtonText}</button> 
           <button class="clear-btn" onclick="handleClear(${i})">🗑️ Clear</button>
         </div>`;
     }
 
-    // --- Assemble the final HTML for the step ---
     stepDiv.innerHTML = `
       <h3>
         <span class="step-number">${i}</span>
