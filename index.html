@@ -368,8 +368,9 @@
 .part5 h3 { color: #4a90e2; }
 
 /* style for highlighting color */
-.yellow-highlight {
-  background-color: #9bf8ec; /* A soft teal to match the image */
+
+.teal-highlight {
+  background-color: #9bf8ec; /* Your chosen vibrant teal color */
   border-radius: 4px;
   padding: 1px 4px;
 }
@@ -2562,6 +2563,8 @@ function pasteIntoHighlighter() {
 
 
 
+
+
 function applyHighlight() {
   const box = document.getElementById('highlight-box');
   if (!box || !box.innerHTML.trim()) {
@@ -2569,30 +2572,46 @@ function applyHighlight() {
     return;
   }
 
-  
-const highlightClass = 'yellow-highlight';
-  let html = box.innerHTML;
+  // The vibrant teal color you want to use.
+  const highlightColor = '#9bf8ec'; 
 
-  // --- Transformation Logic ---
+  // --- Start of Final DOM-Based Logic ---
 
-  // Step 1: Replace all <span> tags that have a bold style.
-  // This is the most common format when pasting from Google Docs.
-  // The regex finds any span with "font-weight: bold" (or 700+) in its style attribute,
-  // captures the content inside it ($1), and replaces the entire span tag with our new highlight span.
-  const spanRegex = /<span\b[^>]*style="[^"]*font-weight:\s*(?:bold|700|800|900)[^"]*"[^>]*>(.*?)<\/span>/gi;
-  html = html.replace(spanRegex, `<span class="${highlightClass}">$1</span>`);
+  // 1. Handle spans that are styled to be bold (the main case from Google Docs).
+  // We get all spans inside the box to check them individually.
+  const allSpans = Array.from(box.querySelectorAll('span'));
 
-  // Step 2: Replace all simple <b> and <strong> tags.
-  // This handles basic HTML or text bolded in a simpler editor.
-  // It captures the content ($2) and replaces the bold tag with our highlight span.
-  const tagRegex = /<(b|strong)\b[^>]*>(.*?)<\/\1>/gi;
-  html = html.replace(tagRegex, `<span class="${highlightClass}">$2</span>`);
-  
-  // --- End of Transformation Logic ---
+  allSpans.forEach(span => {
+    // Check if the span's inline style makes it bold.
+    if (span.style.fontWeight === 'bold' || parseInt(span.style.fontWeight) >= 700) {
+      
+      // SURGICAL MODIFICATION:
+      // a) Un-bold the text by changing the inline style directly.
+      span.style.fontWeight = 'normal';
+      
+      // b) Apply the highlight color by changing the inline style directly.
+      // This will correctly override the "transparent" value from the paste.
+      span.style.backgroundColor = highlightColor;
+    }
+  });
 
-  // Update the editor with the final, correct HTML.
-  box.innerHTML = html;
-  
+  // 2. Handle simple <b> and <strong> tags as a fallback.
+  // This ensures text bolded in simpler editors also works.
+  const boldTags = Array.from(box.querySelectorAll('b, strong'));
+  boldTags.forEach(tag => {
+    // a) Create a new span to replace the old bold tag.
+    const newSpan = document.createElement('span');
+    
+    // b) Apply the highlight color directly to the new span's inline style.
+    newSpan.style.backgroundColor = highlightColor;
+    
+    // c) Move the content from the old tag into the new span.
+    newSpan.innerHTML = tag.innerHTML;
+    
+    // d) Replace the old tag with our new, styled span.
+    tag.parentNode.replaceChild(newSpan, tag);
+  });
+
   showMessage('✨ Bold text has been highlighted!');
 }
 
@@ -2605,6 +2624,8 @@ function clearHighlighter() {
 }
 // --- ADD THIS NEW FUNCTION ---
 
+// REPLACE YOUR OLD copyFromHighlighter FUNCTION WITH THIS CORRECTED VERSION
+
 function copyFromHighlighter() {
   const box = document.getElementById('highlight-box');
   if (!box || !box.innerHTML.trim()) {
@@ -2612,11 +2633,27 @@ function copyFromHighlighter() {
     return;
   }
 
-  // To copy rich text, we need to provide both HTML and plain text versions
-  // for maximum compatibility with different applications.
+  // --- Start of New Logic ---
+  // 1. Create a temporary, in-memory div to hold a clean copy of the HTML.
+  const tempDiv = document.createElement('div');
+  tempDiv.innerHTML = box.innerHTML;
+
+  // 2. Find all our highlighted spans within this temporary div.
+  tempDiv.querySelectorAll('.teal-highlight').forEach(span => {
+    // 3. Add the background color directly as an inline style.
+    //    This is what external applications like Google Docs understand best.
+    span.style.backgroundColor = '#cce8e0';
+    
+    // 4. IMPORTANT: Remove the class name. This prevents the destination
+    //    application from trying to guess or inherit other styles (like the font).
+    span.removeAttribute('class');
+  });
+  // --- End of New Logic ---
+
   try {
-    const htmlContent = box.innerHTML;
-    const textContent = box.innerText;
+    // Use the cleaned HTML from our temporary div for the clipboard.
+    const htmlContent = tempDiv.innerHTML;
+    const textContent = box.innerText; // Plain text version remains the same.
 
     const blobHtml = new Blob([htmlContent], { type: 'text/html' });
     const blobText = new Blob([textContent], { type: 'text/plain' });
