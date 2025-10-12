@@ -2409,7 +2409,7 @@ function handleCopy(step) {
       // --- UPDATED: Special case for Step 10 ---
       const inputBox1 = document.getElementById(`input${step}_1`); // The div
       const inputBox2 = document.getElementById(`input${step}_2`); // The textarea
-      const text1 = inputBox1 ? inputBox1.value.trim() : ""; // Use .innerText for the div
+      const text1 = inputBox1 ? inputBox1.innerText.trim() : ""; // Use .innerText for the div
       const text2 = inputBox2 ? inputBox2.innerText.trim() : "";   // Use .value for the textarea
       finalText =
         getPrompt(step) +
